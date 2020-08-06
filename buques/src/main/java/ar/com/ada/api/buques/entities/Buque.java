@@ -1,5 +1,9 @@
 package ar.com.ada.api.buques.entities;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,6 +13,7 @@ public class Buque {
     private ObjectId _id;
     private String matricula;
     private String nombre;
+    private List<Viaje> viajes = new ArrayList<>();
 
     public String get_id() {
 
@@ -36,6 +41,29 @@ public class Buque {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<Viaje> getViajes() {
+        return viajes;
+    }
+
+    public void setViajes(List<Viaje> viajes) {
+        this.viajes = viajes;
+    }
+
+    public void agregarViaje(Viaje viaje) {
+        this.viajes.add(viaje);
+    }
+
+    public Viaje buscarViaje(Date fecha) {
+
+        for (Viaje viaje : viajes) {
+
+            if (viaje.getFechaViaje().equals(fecha)) {
+                return viaje;
+            }
+        }
+        return null;
     }
 
 }
