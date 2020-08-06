@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Puerto {
 
     private ObjectId _id;
-    private Integer numero;
+    private Integer numero; //NRO INTERNACIONAL
     private String nombre;
 
     public Integer getNumero() {
